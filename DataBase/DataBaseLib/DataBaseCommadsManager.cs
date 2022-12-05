@@ -9,29 +9,84 @@ namespace DataBaseLib;
 /// </summary>
 public class DataBaseCommadsManager
 {
-
-
     public DataTable GetDataTable(string tableName)
     {
-        BaseCommands command = new BaseCommands();        
+        BaseCommands command = new BaseCommands();
         return command.GetDataTable(tableName);
     }
 
     public void Insert(string[] args, string tableName)
     {
         ITableEditorCommand command;
-        switch(tableName)
+        switch (tableName)
         {
-            case "Автомобили": command = new Table1Commands();
+            case "Продажи":
+                command = new Table1Commands();
+                break;
+            case "Автомобили":
+                command = new Table2Commands();
+                break;
+            case "Автосалон":
+                command = new Table3Commands();
+                break;
+            case "Клиенты":
+                command = new Table4Commands();
+                break;
+            case "Менеджер":
+                command = new Table5Commands();
                 break;
             default: throw new Exception("Ошибка!");
-        }        
+        }
         command.Insert(args);
     }
 
-    // Домашнее задание
-    // 1. Дописать логику методов Update, Delete
-    // 2. Продумать структуру БД по вариантам
-    // 3. Использовать Access или SQLite
+    public void Delete(string[] args, string tableName)
+    {
+        ITableEditorCommand command;
+        switch (tableName)
+        {
+            case "Продажи":
+                command = new Table1Commands();
+                break;
+            case "Автомобили":
+                command = new Table2Commands();
+                break;
+            case "Автосалон":
+                command = new Table3Commands();
+                break;
+            case "Клиенты":
+                command = new Table4Commands();
+                break;
+            case "Менеджер":
+                command = new Table5Commands();
+                break;
+            default: throw new Exception("Ошибка!");
+        }
+        command.Delete(args);
+    }
 
+    public void Update(string[] args, string tableName)
+    {
+        ITableEditorCommand command;
+        switch (tableName)
+        {
+            case "Продажи":
+                command = new Table1Commands();
+                break;
+            case "Автомобили":
+                command = new Table2Commands();
+                break;
+            case "Автосалон":
+                command = new Table3Commands();
+                break;
+            case "Клиенты":
+                command = new Table4Commands();
+                break;
+            case "Менеджер":
+                command = new Table5Commands();
+                break;
+            default: throw new Exception("Ошибка!");
+        }
+        command.Update(args);
+    }
 }

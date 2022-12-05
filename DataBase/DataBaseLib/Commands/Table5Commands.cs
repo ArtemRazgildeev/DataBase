@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseLib.Commands
 {
-    internal class Table1Commands : ITableEditorCommand
+    internal class Table5Commands : ITableEditorCommand
     {
         // ЕСЛИ нужна другая БД, просто меняем AccessDataBaseController
         // на нужную, например SQLiteDataBaseController
@@ -21,24 +21,24 @@ namespace DataBaseLib.Commands
 
         public void Insert(string[] args)
         {            
-            string query = $"INSERT INTO [Продажи] " +
-                    $"([Код продажи], [Код машины], [Клиент], [Код менеджера], [Код автосалона]) " +
-                    $"VALUES ({args[0]}, {args[1]}, {args[2]}, {args[3]}, {args[4]})";
+            string query = $"INSERT INTO [Менеджер] " +
+                    $"([Код менеджера], [Фамилия], [Имя], [Отчество]) " +
+                    $"VALUES ({args[0]}, '{args[1]}', '{args[2]}', '{args[3]}')";
             controller.ExecuteCommand(query);
         }
 
         public void Update(string[] args)
         {
-            string query = @$"UPDATE [Продажи]
-                    SET [Код машины] = {args[1]}, [Клиент] = {args[2]}, [Код менеджера] = {args[3]}, [Код автосалона] = {args[4]}
-                    WHERE [Код продажи] = {args[0]}";
+            string query = @$"UPDATE [Менеджер]
+                    SET [Фамилия] = '{args[1]}', [Имя] = '{args[2]}', [Отчество] = '{args[3]}'
+                    WHERE [Код менеджера] = {args[0]}";
             controller.ExecuteCommand(query);
         }
 
         public void Delete(string[] args)
         {
-            string query = $"DELETE FROM [Продажи] " +
-                    $"WHERE [Код продажи] = {args[0]}";
+            string query = $"DELETE FROM [Менеджер] " +
+                    $"WHERE [Код менеджера] = {args[0]}";
             controller.ExecuteCommand(query);
         }
 
